@@ -6,6 +6,8 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "latest",
     "@material-ui/styles": "^3.0.0-alpha.10",
+    "@tensorflow-models/coco-ssd": "^1.0.0",
+    "@tensorflow/tfjs": "^1.0.3",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "jwt-decode": "^2.2.0",

@@ -8,6 +8,7 @@ import Login from "./components/auth/Login";
 import Landing from "./components/layout/Landing";
 import jwt_decode from "jwt-decode";
 import Register from "./components/auth/Register";
+import Dashboard from "./components/dashboard/Dashboard";
 import "./App.css";
 
 if (localStorage.jwtToken) {
@@ -29,6 +30,7 @@ class App extends Component {
           <div className="App">
             <Route exact path="/" component={Landing} />
             <div className="container">
+              <Route exact path="/home" component={Dashboard} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
             </div>
