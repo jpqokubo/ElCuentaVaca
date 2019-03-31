@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import store from "./store";
-import { logoutUser } from "./redux/actions/auth/authActions";
-import { setCurrentUser } from "./redux/actions/auth/authActions";
+import { logoutUser, setCurrentUser } from "./redux/actions/authActions";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import setAuthToken from "./utils/setAuthToken";
 import Login from "./components/auth/Login";
 import Landing from "./components/layout/Landing";
 import jwt_decode from "jwt-decode";
+import Register from "./components/auth/Register";
 import "./App.css";
 
 if (localStorage.jwtToken) {
@@ -27,9 +27,10 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Landing} />
             <div className="container">
-              <Route exact path="/home" component={Landing} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
             </div>
           </div>
         </Router>

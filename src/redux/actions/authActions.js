@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import { SET_CURRENT_USER, GET_ERRORS, SUCCESS_RESET } from "../../types";
-import setAuthToken from "../../../utils/setAuthToken";
+import { SET_CURRENT_USER, GET_ERRORS, SUCCESS_RESET } from "../types";
+import setAuthToken from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
 export const registerUser = (userData, history) => dispatch => {
