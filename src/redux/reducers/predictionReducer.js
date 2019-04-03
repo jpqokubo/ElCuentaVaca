@@ -4,7 +4,7 @@ import {
   PREDICTIONS_ERROR
 } from "../types";
 const initialState = {
-  predictions: "",
+  predictions: [],
   loading: false
 };
 
@@ -25,7 +25,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        predictions: action.payload
+        predictionsResult: [...state.predictions, action.payload]
       };
 
     default:
