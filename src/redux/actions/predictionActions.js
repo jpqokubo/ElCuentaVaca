@@ -7,10 +7,10 @@ import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import uuid from "uuid";
 export const getPredictions = image => async dispatch => {
   dispatch({ type: PREDICTIONS_REQUEST });
-  console.log(image.src);
+  console.log(image);
   cocoSsd
     .load()
-    .then(model => model.detect(image, 100))
+    .then(model => model.detect(image))
     .then(predictions => {
       dispatch({
         type: PREDICTIONS_SUCCESS,
@@ -20,7 +20,7 @@ export const getPredictions = image => async dispatch => {
     .catch(err =>
       dispatch({
         type: PREDICTIONS_ERROR,
-        payload: err.response.data
+        payload: err
       })
     );
 };

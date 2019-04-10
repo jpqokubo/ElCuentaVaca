@@ -4,8 +4,8 @@ import {
   PREDICTIONS_ERROR
 } from "../types";
 const initialState = {
-  predictions: [],
-  loading: false
+  loading: false,
+  predictionsResult: []
 };
 
 export default function(state = initialState, action) {
@@ -19,13 +19,14 @@ export default function(state = initialState, action) {
     case PREDICTIONS_ERROR:
       return {
         ...state,
-        errors: action.payload
+        errors: action.payload,
+        loading: false
       };
     case PREDICTIONS_SUCCESS:
       return {
         ...state,
         loading: false,
-        predictionsResult: [...state.predictions, action.payload]
+        predictionsResult: [...state.predictionsResult, action.payload]
       };
 
     default:
