@@ -3,7 +3,7 @@ import cattle from "../../images/cattle10.JPG";
 import { connect } from "react-redux";
 import { getPredictions } from "../../redux/actions/predictionActions";
 import DisplayResults from "../displayResults/DisplayResults";
-import { Grid, Paper, Typography } from "@material-ui/core/";
+import { Grid, Paper, Typography, CircularProgress } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/styles";
 import red from "@material-ui/core/colors/red";
 const useStyles = makeStyles(theme => ({
@@ -14,7 +14,9 @@ const useStyles = makeStyles(theme => ({
   paper: {
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
+    width: "90%",
+    margin: 10
   },
   control: {
     padding: theme.spacing.unit * 2
@@ -40,11 +42,8 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.shortest
     })
   },
-  expandOpen: {
-    transform: "rotate(180deg)"
-  },
-  avatar: {
-    backgroundColor: red[500]
+  progress: {
+    margin: "25%"
   }
 }));
 
@@ -62,8 +61,21 @@ function dashboard(props) {
     predictionsResult.map(
       predictions => (totalCows = predictions.predictions.length + totalCows)
     );
-    console.log(totalCows);
-    return <Typography>{totalCows}</Typography>;
+    return (
+      <div>
+        <Typography inline variant="h5" style={{ textAlign: "center" }}>
+          Inventario total de vacas:
+        </Typography>{" "}
+        <Typography
+          inline
+          primary
+          variant="h5"
+          style={{ textAlign: "center", color: "#4286f4" }}
+        >
+          {totalCows}
+        </Typography>{" "}
+      </div>
+    );
   };
 
   return (
@@ -81,14 +93,16 @@ function dashboard(props) {
             <Paper className={classes.paper}>{calculateInvetory()}</Paper>
           )}
 
-          {props.loading
-            ? null
-            : predictionsResult.map((predictions, index) => (
-                <DisplayResults
-                  predictionsResult={predictions}
-                  index={index + 1}
-                />
-              ))}
+          {props.loading ? (
+            <CircularProgress className={classes.progress} />
+          ) : (
+            predictionsResult.map((predictions, index) => (
+              <DisplayResults
+                predictionsResult={predictions}
+                index={index + 1}
+              />
+            ))
+          )}
         </Grid>
       </Grid>
     </Grid>

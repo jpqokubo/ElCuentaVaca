@@ -71,7 +71,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function displayResults(props) {
-  console.log(props);
   const predictionsResult = props.predictionsResult;
   const predictions = props.predictionsResult.predictions;
   const classes = useStyles();
