@@ -5,7 +5,7 @@ import { getPredictions } from "../../redux/actions/predictionActions";
 import DisplayResults from "../displayResults/DisplayResults";
 import { Grid, Paper, Typography, CircularProgress } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/styles";
-import red from "@material-ui/core/colors/red";
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,

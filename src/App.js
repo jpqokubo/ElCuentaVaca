@@ -32,7 +32,7 @@ class App extends Component {
             <NavBar />
             <Route exact path="/" component={Landing} />
             <div className="container">
-              <Route exact path="/home" component={Dashboard} />
+              <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
             </div>

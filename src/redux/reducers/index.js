@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
-import predictions from "./predictionReducer";
+import predictionsReducer from "./predictionReducer";
+import cameraReducer from "./cameraReducer";
 
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  predictions: predictions
+  predictions: predictionsReducer,
+  camera: cameraReducer
 });

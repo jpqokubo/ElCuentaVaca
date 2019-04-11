@@ -145,7 +145,11 @@ function displayResults(props) {
   return (
     <React.Fragment>
       {showImage ? (
-        <img src={predictionsResult.image} id={predictionsResult.id} />
+        <img
+          src={predictionsResult.image}
+          id={predictionsResult.id}
+          alt="Tensorflow.js"
+        />
       ) : null}
 
       <Card className={classes.card}>
