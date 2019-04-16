@@ -5,7 +5,7 @@ import {
 } from "../types";
 
 const initialState = {
-  picturesBatches: []
+  pictureBatches: []
 };
 
 export default function(state = initialState, action) {
@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        picturesBatches: [...state.picturesBatches, action.payload]
+        pictureBatches: [...state.pictureBatches, action.payload]
       };
     case BATCH_PICTURES_REQUEST:
       return {

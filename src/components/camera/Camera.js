@@ -37,9 +37,9 @@ function Camera(props) {
   };
 
   const onClose = () => {
-    const todaysDate = moment().format();
+    const inventoryDate = moment().format();
     if (pictures.length > 0) {
-      props.batchPictures(pictures, todaysDate);
+      props.batchPictures(pictures, inventoryDate);
     }
 
     props.cameraOpen();
