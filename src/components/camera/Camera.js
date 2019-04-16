@@ -13,6 +13,7 @@ import ReactCamera from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
 import { batchPictures } from ".././../redux/actions/cameraActions";
 import { connect } from "react-redux";
+import uuid from 'uuid'
 
 const useStyles = makeStyles({
   appBar: {
@@ -38,8 +39,9 @@ function Camera(props) {
 
   const onClose = () => {
     const inventoryDate = moment().format();
+    const id = uuid()
     if (pictures.length > 0) {
-      props.batchPictures(pictures, inventoryDate);
+      props.batchPictures(pictures, inventoryDate, id);
     }
 
     props.cameraOpen();

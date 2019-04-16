@@ -10,6 +10,7 @@ import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import moment from 'moment'
+import {deleteBatchPictures} from '../../redux/actions/cameraActions'
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -52,7 +53,7 @@ function Batches(props) {
     setExpanded(!expanded);
   }
   function handleDelete (batch) { 
-    console.log(batch)
+   props.deleteBatchPictures(batch)
   }
   return (
     <Grid container className={classes.root}>
@@ -108,4 +109,4 @@ function Batches(props) {
 const mapStateToProps = state => ({
  pictureBatches : state.camera.pictureBatches
   });
-export default connect(mapStateToProps) (Batches)
+export default connect(mapStateToProps, {deleteBatchPictures}) (Batches)

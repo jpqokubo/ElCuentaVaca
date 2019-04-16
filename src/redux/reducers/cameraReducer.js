@@ -1,7 +1,8 @@
 import {
   BATCH_PICTURES_SUCCESS,
   BATCH_PICTURES_ERROR,
-  BATCH_PICTURES_REQUEST
+  BATCH_PICTURES_REQUEST,
+  DELETE_BATCH_PICTURES
 } from "../types";
 
 const initialState = {
@@ -11,7 +12,6 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case BATCH_PICTURES_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         loading: false,
@@ -28,6 +28,11 @@ export default function(state = initialState, action) {
         loadging: false,
         error: action.payload
       };
+    case DELETE_BATCH_PICTURES: 
+    return { 
+      ...state, 
+      pictureBatches: state.pictureBatches.filter( batch => ( batch !== action.payload))
+    }
 
     default:
       return state;
