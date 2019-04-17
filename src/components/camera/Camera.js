@@ -1,23 +1,22 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/styles";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import moment from "moment";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import CloseIcon from "@material-ui/icons/Close";
-import Slide from "@material-ui/core/Slide";
-import ReactCamera from "react-html5-camera-photo";
-import "react-html5-camera-photo/build/css/index.css";
-import { batchPictures } from ".././../redux/actions/cameraActions";
-import { connect } from "react-redux";
-import uuid from 'uuid'
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/styles';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import moment from 'moment';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+import ReactCamera from 'react-html5-camera-photo';
+import 'react-html5-camera-photo/build/css/index.css';
+import { batchPictures } from '.././../redux/actions/cameraActions';
+import { connect } from 'react-redux';
+import uuid from 'uuid';
 
 const useStyles = makeStyles({
   appBar: {
-    position: "relative"
+    position: 'relative'
   },
   flex: {
     flex: 1
@@ -25,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 function Transition(props) {
-  return <Slide direction="up" {...props} />;
+  return <Slide direction='up' {...props} />;
 }
 
 function Camera(props) {
@@ -39,7 +38,7 @@ function Camera(props) {
 
   const onClose = () => {
     const inventoryDate = moment().format();
-    const id = uuid()
+    const id = uuid();
     if (pictures.length > 0) {
       props.batchPictures(pictures, inventoryDate, id);
     }
@@ -56,17 +55,17 @@ function Camera(props) {
       >
         <AppBar className={classes.appBar}>
           <Toolbar>
-            <IconButton color="inherit" onClick={onClose} aria-label="Close">
+            <IconButton color='inherit' onClick={onClose} aria-label='Close'>
               <CloseIcon />
             </IconButton>
 
-            <Button color="inherit" onClick={onClose}>
+            <Button color='inherit' onClick={onClose}>
               save
             </Button>
           </Toolbar>
         </AppBar>
         <ReactCamera
-          imageType="jpg"
+          imageType='jpg'
           isFullscreen={true}
           onTakePhoto={dataUri => {
             onTakePhoto(dataUri);

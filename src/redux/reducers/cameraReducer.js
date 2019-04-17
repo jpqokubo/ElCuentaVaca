@@ -2,8 +2,9 @@ import {
   BATCH_PICTURES_SUCCESS,
   BATCH_PICTURES_ERROR,
   BATCH_PICTURES_REQUEST,
-  DELETE_BATCH_PICTURES
-} from "../types";
+  DELETE_BATCH_PICTURES,
+  PROCESS_BATCH_PICTURES
+} from '../types';
 
 const initialState = {
   pictureBatches: []
@@ -28,11 +29,19 @@ export default function(state = initialState, action) {
         loadging: false,
         error: action.payload
       };
-    case DELETE_BATCH_PICTURES: 
-    return { 
-      ...state, 
-      pictureBatches: state.pictureBatches.filter( batch => ( batch !== action.payload))
-    }
+    case DELETE_BATCH_PICTURES:
+      let batch = action.payload.batch;
+      return {
+        ...state,
+        pictureBatches: state.pictureBatches.filter(
+          item => item.id !== batch.id
+        )
+      };
+    case PROCESS_BATCH_PICTURES:
+      return {
+        ...state,
+        batch: action.payload
+      };
 
     default:
       return state;
