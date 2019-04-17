@@ -2,11 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function ProcessPictures() {
-  return ( 
-      props.batch.pictures.map(picture => ( 
-          
-      ))
-  )
+  return <div> hi</div>;
 }
 const mapStateToProps = state => ({
   batch: state.camera.batch,
