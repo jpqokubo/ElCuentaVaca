@@ -1,6 +1,8 @@
 Object recognition with tensorflow.js based on coco images model. 
 
-Camera compnonent to loand and store images in batches. 
+Camera compnonent to load and store images in batches. 
+
+Count and run cattle invetory base on breed and age.
 
 Run pre-process on client if chooses to. 
 
