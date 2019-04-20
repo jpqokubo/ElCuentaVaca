@@ -33,7 +33,7 @@ function Camera(props) {
 
   const onTakePhoto = dataUri => {
     // Do stuff with the dataUri photo...
-    setPictures([...pictures, dataUri]);
+    setPictures([...pictures, { dataUri, id: uuid() }]);
   };
 
   const onClose = () => {

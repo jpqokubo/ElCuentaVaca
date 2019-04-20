@@ -1,7 +1,8 @@
 import {
   BATCH_PICTURES_SUCCESS,
   DELETE_BATCH_PICTURES,
-  PROCESS_BATCH_PICTURES
+  PROCESS_BATCH_PICTURES,
+  DELETE_SINGLE_PICTURE
 } from '../types';
 
 export const batchPictures = (pictures, inventoryDate, id) => dispatch => {
@@ -16,4 +17,8 @@ export const deleteBatchPictures = batch => dispatch => {
 };
 export const processBatchPictures = batch => dispatch => {
   dispatch({ type: PROCESS_BATCH_PICTURES, payload: batch });
+};
+
+export const deleteSinglePicture = id => dispatch => {
+  dispatch({ type: DELETE_SINGLE_PICTURE, payload: id });
 };

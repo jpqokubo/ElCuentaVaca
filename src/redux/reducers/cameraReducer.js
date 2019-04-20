@@ -3,8 +3,10 @@ import {
   BATCH_PICTURES_ERROR,
   BATCH_PICTURES_REQUEST,
   DELETE_BATCH_PICTURES,
-  PROCESS_BATCH_PICTURES
+  PROCESS_BATCH_PICTURES,
+  DELETE_SINGLE_PICTURE
 } from '../types';
+import removeFromObject from '../../utils/deleteFromNestedObject';
 
 const initialState = {
   pictureBatches: []
@@ -29,6 +31,15 @@ export default function(state = initialState, action) {
         loadging: false,
         error: action.payload
       };
+    case DELETE_SINGLE_PICTURE:
+      let id = action.payload;
+      let pictures = state.batch.pictures;
+      console.log(state.pictureBatches);
+      return {
+        ...state,
+        batch: { ...state.batch, pictures: pictures.filter(i => i.id !== id) }
+      };
+
     case DELETE_BATCH_PICTURES:
       let batch = action.payload.batch;
       return {

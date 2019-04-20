@@ -93,12 +93,12 @@ function Batches(props) {
       <Grid container className={classes.root}>
         {props.pictureBatches
           ? props.pictureBatches.map((batch, index) => (
-              <Grid item>
+              <Grid item key={index}>
                 <Card className={classes.card}>
                   <CardHeader
                     avatar={
                       <Avatar
-                        aria-label='Inventario'
+                        aria-label='Lote de Inventario'
                         className={classes.avatar}
                       >
                         {index + 1}
@@ -109,13 +109,13 @@ function Batches(props) {
                         <MoreVertIcon />
                       </IconButton>
                     }
-                    title='Inventario'
+                    title='Lote de Inventario'
                     subheader={moment(batch.inventoryDate).format('MM/DD/YY')}
                   />
 
                   <CardMedia
                     className={classes.media}
-                    image={batch.pictures[0]}
+                    image={batch.pictures[0].dataUri}
                     title='Estancia Serebo'
                   />
 
