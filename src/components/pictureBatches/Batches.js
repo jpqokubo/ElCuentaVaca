@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/styles';
-import classnames from 'classnames';
 import {
   Grid,
   Card,

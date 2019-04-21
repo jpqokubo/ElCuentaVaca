@@ -6,7 +6,6 @@ import {
   PROCESS_BATCH_PICTURES,
   DELETE_SINGLE_PICTURE
 } from '../types';
-import removeFromObject from '../../utils/deleteFromNestedObject';
 
 const initialState = {
   pictureBatches: []
@@ -34,10 +33,15 @@ export default function(state = initialState, action) {
     case DELETE_SINGLE_PICTURE:
       let id = action.payload;
       let pictures = state.batch.pictures;
-      console.log(state.pictureBatches);
+      let pictureBatches = state.pictureBatches;
+      let currentBatch = state.batch;
       return {
         ...state,
-        batch: { ...state.batch, pictures: pictures.filter(i => i.id !== id) }
+        batch: { ...state.batch, pictures: pictures.filter(i => i.id !== id) },
+        pictureBatches: [
+          ...pictureBatches.filter(batches => batches.id !== currentBatch.id),
+          { ...state.batch, pictures: pictures.filter(i => i.id !== id) }
+        ]
       };
 
     case DELETE_BATCH_PICTURES:
