@@ -20,6 +20,7 @@ import Delete from '@material-ui/icons/Delete';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import moment from 'moment';
 import { deleteSinglePicture } from '../../redux/actions/cameraActions';
+import { deleteBatchPictures } from '../../redux/actions/cameraActions';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -39,6 +40,10 @@ const useStyles = makeStyles(theme => ({
   deleteButton: {
     marginLeft: 25
   },
+  processButton: {
+    marginRight: 10,
+    display: 'fixed'
+  },
   expand: {
     transform: 'rotate(0deg)',
     marginLeft: 'auto',
@@ -57,8 +62,15 @@ const useStyles = makeStyles(theme => ({
 function ProcessPictures(props) {
   const classes = useStyles();
   const batch = props.batch;
-  const handleDeletePicture = id => {
-    props.deleteSinglePicture(id);
+
+  // asycn accesing same redux props
+  const handleDeletePicture = async id => {
+    if (batch.pictures.length === 1) {
+      let deletePicture = await props.deleteSinglePicture(id);
+      let deleteBatch = await props.deleteBatchPictures(batch);
+    } else {
+      props.deleteSinglePicture(id);
+    }
   };
   return (
     <React.Fragment>
@@ -90,15 +102,26 @@ function ProcessPictures(props) {
                     image={picture.dataUri}
                     title='Estancia Serebo'
                   />
-                  <CardActions className={classes.actions}>
+                  <CardActions>
                     <Fab
                       onClick={() => handleDeletePicture(picture.id)}
                       aria-label='Delete'
-                      className={classes.fab}
+                      className={classes.actions}
                     >
                       <Delete />
                     </Fab>
                   </CardActions>
+                  {batch.pictures.length - 1 === index ? (
+                    <Button
+                      style={{
+                        float: 'right',
+                        marginBottom: 30,
+                        marginRight: 10
+                      }}
+                    >
+                      Procesar Imagenes
+                    </Button>
+                  ) : null}
                 </Card>
               </Grid>
             ))
@@ -113,5 +136,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { deleteSinglePicture }
+  { deleteSinglePicture, deleteBatchPictures }
 )(ProcessPictures);

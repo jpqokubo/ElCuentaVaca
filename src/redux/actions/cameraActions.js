@@ -13,6 +13,7 @@ export const batchPictures = (pictures, inventoryDate, id) => dispatch => {
 };
 
 export const deleteBatchPictures = batch => dispatch => {
+  console.log(batch);
   dispatch({ type: DELETE_BATCH_PICTURES, payload: { batch } });
 };
 export const processBatchPictures = batch => dispatch => {
