@@ -72,6 +72,7 @@ function ProcessPictures(props) {
       props.deleteSinglePicture(id);
     }
   };
+  console.log(batch.pictures.length);
   return (
     <React.Fragment>
       <Grid container className={classes.root}>
@@ -110,18 +111,16 @@ function ProcessPictures(props) {
                     >
                       <Delete />
                     </Fab>
+                    {batch.pictures.length - 1 === index ? (
+                      <Button
+                        variant='contained'
+                        color='primary'
+                        style={{ marginLeft: 150 }}
+                      >
+                        Procesar Imagenes
+                      </Button>
+                    ) : null}
                   </CardActions>
-                  {batch.pictures.length - 1 === index ? (
-                    <Button
-                      style={{
-                        float: 'right',
-                        marginBottom: 30,
-                        marginRight: 10
-                      }}
-                    >
-                      Procesar Imagenes
-                    </Button>
-                  ) : null}
                 </Card>
               </Grid>
             ))
