@@ -62,6 +62,7 @@ const useStyles = makeStyles(theme => ({
 function ProcessPictures(props) {
   const classes = useStyles();
   const batch = props.batch;
+  const handleBatchDetection = () => {};
 
   // asycn accesing same redux props
   const handleDeletePicture = async id => {
@@ -72,7 +73,6 @@ function ProcessPictures(props) {
       props.deleteSinglePicture(id);
     }
   };
-  console.log(batch.pictures.length);
   return (
     <React.Fragment>
       <Grid container className={classes.root}>
@@ -115,6 +115,7 @@ function ProcessPictures(props) {
                       <Button
                         variant='contained'
                         color='primary'
+                        onClick={handleBatchDetection}
                         style={{ marginLeft: 150 }}
                       >
                         Procesar Imagenes

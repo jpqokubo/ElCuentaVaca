@@ -99,6 +99,7 @@ function Batches(props) {
                       <Avatar
                         aria-label='Lote de Inventario'
                         className={classes.avatar}
+                        primary
                       >
                         {index + 1}
                       </Avatar>
